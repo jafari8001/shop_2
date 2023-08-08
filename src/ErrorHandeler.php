@@ -1,7 +1,5 @@
 <?php
-
     class ErrorHandeler{
-
         public static function handle_excption(Throwable $exception):void{
             http_response_code(500);
             echo json_encode([
@@ -10,9 +8,6 @@
                 "file"=> $exception->getFile(),
                 "line"=> $exception->getLine(),
             ]);
-        }
-        
+        } 
     }
-    
-
 ?>

@@ -1,10 +1,10 @@
 <?php
-
     class UserController{
-        private $user_model;
+        private $users;
+        private $table_name;
         public function __construct() {
-            $this->user_model = new Users();
-        } 
+            $this->users = new Users();
+        }
         public function user_request(string $method, ?string $id): void{
             if ($id) {
                 $this->process_resorce_request($method, $id);
@@ -19,7 +19,7 @@
         private function process_collection_request($method){
             switch ($method) {
                 case 'GET':
-                    echo json_encode([]);
+                    echo json_encode($this->users->get_all_users($this->table_name));
                     break;
                 
                 default:
